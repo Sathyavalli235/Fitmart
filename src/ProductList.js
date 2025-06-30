@@ -6,12 +6,12 @@ const ProductList = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3001/getposts')
+        axios.get('https://fitmart.onrender.com/getposts')
             .then(res => setPosts(res.data));
     }, []);
 
     const handleDelete = async (id) => {
-        await axios.delete(`http://localhost:3001/deletepost/${id}`);
+        await axios.delete(`https://fitmart.onrender.com/deletepost/${id}`);
         setPosts(posts.filter(post => post.id !== id));
     };
 

@@ -12,7 +12,7 @@ const AddProduct = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-   axios.post('http://localhost:3001/addpost', {  
+   axios.post('https://fitmart.onrender.com/addpost', {  
   productname: productName, 
   description,
   price,

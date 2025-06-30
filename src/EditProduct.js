@@ -13,7 +13,7 @@ const EditProduct = () => {
     useEffect(() => {
         const fetchPost = async () => {
             try {
-                const res = await axios.get(`http://localhost:3001/getpost/${id}`);
+                const res = await axios.get(`https://fitmart.onrender.com/getpost/${id}`);
                 setProductName(res.data[0].ProductName);
                 setDescription(res.data[0].Description);
                 setPrice(res.data[0].Price);
@@ -27,7 +27,7 @@ const EditProduct = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`http://localhost:3001/updatepost/${id}`, { ProductName,Description,Price });
+            await axios.put(`https://fitmart.onrender.com/updatepost/${id}`, { ProductName,Description,Price });
             navigate('/');
         } catch (err) {
             console.error(err);
