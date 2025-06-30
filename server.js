@@ -1,5 +1,5 @@
 const express = require('express');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
@@ -11,12 +11,14 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // MySQL connection
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'fitmart'
-});
+//const db = mysql.createConnection({
+  //  host: 'localhost',
+    //user: 'root',
+    //password: 'root',
+    //database: 'fitmart'
+//});
+const db=mysql.createConnection("mysql://root:AIjKGKXKmwYXGLkiUfxbHTgmecDwVkcD@crossover.proxy.rlwy.net:40530/railway")
+
 
 db.connect((err) => {
     if (err) {
