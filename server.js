@@ -12,14 +12,13 @@ app.use(bodyParser.json());
 
 // MySQL connection
 //const db = mysql.createConnection({
-  //  host: 'localhost',
+   // host: 'localhost',
     //user: 'root',
     //password: 'root',
     //database: 'fitmart'
 //});
+
 const db=mysql.createConnection("mysql://root:AIjKGKXKmwYXGLkiUfxbHTgmecDwVkcD@crossover.proxy.rlwy.net:40530/railway")
-
-
 db.connect((err) => {
     if (err) {
         throw err;
@@ -38,7 +37,7 @@ app.get('/createdb', (req, res) => {
 
 // Create table
 app.get('/createtable', (req, res) => {
-    let sql = 'CREATE TABLE posts(id int AUTO_INCREMENT, product name VARCHAR(255), description TEXT,price int, image_url VARCHAR(255),PRIMARY KEY(id))';
+    let sql = 'CREATE TABLE posts(id INT AUTO_INCREMENT, product_name VARCHAR(255), description TEXT, price INT, image_url VARCHAR(255), PRIMARY KEY(id))';
     db.query(sql, (err, result) => {
         if (err) throw err;
         res.send('Posts table created...');
