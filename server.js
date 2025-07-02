@@ -37,12 +37,22 @@ app.get('/createdb', (req, res) => {
 
 // Create table
 app.get('/createtable', (req, res) => {
-    let sql = 'CREATE TABLE posts(id INT AUTO_INCREMENT, product_name VARCHAR(255), description TEXT, price INT, image_url VARCHAR(255), PRIMARY KEY(id))';
+    let sql = 'CREATE TABLE posts(id INT AUTO_INCREMENT, productname VARCHAR(255), description TEXT, price INT, image_url VARCHAR(255), PRIMARY KEY(id))';
     db.query(sql, (err, result) => {
         if (err) throw err;
         res.send('Posts table created...');
     });
 });
+
+// app.get('/delect',(req,res) => {
+//     let sql = 'DROP TABLE posts';
+//     db.query(sql,(err,result) =>
+//         {
+//             if(err) throw err;
+//             res.send('Posts table deleted...');
+//             }
+//             );
+// })
 
 // Insert post
 app.post('/addpost', (req, res) => {
@@ -82,8 +92,10 @@ app.get('/getpost/:id', (req, res) => {
 
 app.put('/updatepost/:id', (req, res) => {
   const { id } = req.params;
+  console.log(req.body);
   const { productname, description, price, image_url } = req.body;
-const sql = "INSERT INTO products (productname, description, price, ) VALUES (?, ?, ?, )";
+
+const sql = "UPDATE products SET productname = ?, description = ?, price = ?, image_url = ? WHERE id = ?";
   db.query(sql, [productname, description, price, image_url, id], (err, result) => {
     if (err) throw err;
     res.send('Post updated...');
