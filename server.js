@@ -92,15 +92,18 @@ app.get('/getpost/:id', (req, res) => {
 
 app.put('/updatepost/:id', (req, res) => {
   const { id } = req.params;
-  console.log(req.body);
-  const { productname, description, price, image_url } = req.body;
+  const { productname, description, price } = req.body;
 
-const sql = "UPDATE products SET productname = ?, description = ?, price = ?, image_url = ? WHERE id = ?";
-  db.query(sql, [productname, description, price, image_url, id], (err, result) => {
-    if (err) throw err;
-    res.send('Post updated...');
+  const sql = "UPDATE products SET productname = ?, description = ?, price = ? WHERE id = ?";
+  db.query(sql, [productname, description, price, id], (err, result) => {
+    if (err) {
+      console.error('Error updating post:', err);
+      return res.status(500).send('Failed to update post.');
+    }
+    res.send('Post updated successfully.');
   });
 });
+
 
 // Delete post
 app.delete('/deletepost/:id', (req, res) => {
