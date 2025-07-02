@@ -241,7 +241,7 @@ const Home = () => (
       <div className="col-md-4 mb-3">
         <h5>Contact Us</h5>
         <p>Email: support@fitmart.com</p>
-        <p>Phone: +91 93449 43585</p>
+        <p>Phone: +91 98765 43210</p>
       </div>
     </div>
     <hr className="border-top border-secondary" />
