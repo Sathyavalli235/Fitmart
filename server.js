@@ -94,7 +94,7 @@ app.put('/updatepost/:id', (req, res) => {
   const { id } = req.params;
   const { productname, description, price } = req.body;
 
-  const sql = "UPDATE products SET productname = ?, description = ?, price = ? WHERE id = ?";
+  const sql = "UPDATE posts SET productname = ?, description = ?, price = ? WHERE id = ?";
   db.query(sql, [productname, description, price, id], (err, result) => {
     if (err) {
       console.error('Error updating post:', err);
