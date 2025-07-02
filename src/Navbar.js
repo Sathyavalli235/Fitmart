@@ -17,12 +17,12 @@ const FitNavbar = () => {
             <Nav.Link as={Link} to="/addproduct"> ➕Add New Products</Nav.Link>
             <Nav.Link as={Link} to="/productslist">📦 Products</Nav.Link>
 
-
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
 };
+
 
 export default FitNavbar;

@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import Home from './Home';
 import AddProduct from './AddProduct';
 import ProductList from './ProductList';
+import EditProduct from './EditProduct';
 
 const App = () => (
   <Router>
@@ -12,6 +13,7 @@ const App = () => (
       <Route path="/" element={<Home />} />
       <Route path="/addproduct" element={<AddProduct />} />
       <Route path="/productslist" element={<ProductList />} />
+      <Route path="/edit/:id" element={<EditProduct />} />
 
     </Routes>
   </Router>

@@ -223,7 +223,34 @@ const Home = () => (
         </div>
       </div>
     </section>
-    
+    <footer className="bg-dark text-white pt-4 pb-2 mt-5">
+  <div className="container">
+    <div className="row">
+      <div className="col-md-4 mb-3">
+        <h5>About FitMart</h5>
+        <p>Your one-stop destination for fitness equipment and accessories.</p>
+      </div>
+      <div className="col-md-4 mb-3">
+        <h5>Quick Links</h5>
+        <ul className="list-unstyled">
+          <li><Link to="/" className="text-white text-decoration-none">🏠Home</Link></li>
+          <li><Link to="/products" className="text-white text-decoration-none">➕Products</Link></li>
+          <li><Link to="/add" className="text-white text-decoration-none">📦Add Product</Link></li>
+        </ul>
+      </div>
+      <div className="col-md-4 mb-3">
+        <h5>Contact Us</h5>
+        <p>Email: support@fitmart.com</p>
+        <p>Phone: +91 93449 43585</p>
+      </div>
+    </div>
+    <hr className="border-top border-secondary" />
+    <div className="text-center">
+      <p className="mb-0">&copy; {new Date().getFullYear()} FitMart. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
   </div>
   
 );

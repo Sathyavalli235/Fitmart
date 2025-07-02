@@ -1,88 +1,98 @@
-import React, { useState, useEffect } from 'react';
+// EditProduct.js
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const EditProduct = () => {
-    const [ProductName, setProductName] = useState('');
-    const [Description, setDescription] = useState('');
-    const [Price, setPrice] = useState('');
-
     const { id } = useParams();
     const navigate = useNavigate();
+    const [formData, setFormData] = useState({
+        productname: '',
+        description: '',
+        price: ''
+    });
 
     useEffect(() => {
         const fetchPost = async () => {
             try {
                 const res = await axios.get(`https://fitmart.onrender.com/getpost/${id}`);
-                setProductName(res.data[0].ProductName);
-                setDescription(res.data[0].Description);
-                setPrice(res.data[0].Price);
+                // setFormData({
+                //     productname: res.data.productname,
+                //     description: res.data.description,
+                //     price: res.data.price
+                // });
+                const data = res.data[0];
+                setFormData({
+                    productname: data.productname,
+                    description: data.description,
+                    price: data.price
+                })
             } catch (err) {
                 console.error(err);
             }
         };
         fetchPost();
+        // console.log(formData)
     }, [id]);
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    // console.log(formData);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setFormData({
+            ...formData,
+        })
         try {
-            await axios.put(`https://fitmart.onrender.com/updatepost/${id}`, { ProductName,Description,Price });
-            navigate('/');
-        } catch (err) {
-            console.error(err);
+            await axios.put(`https://fitmart.onrender.com/updatepost/${id}`, formData);
+            navigate('/'); // redirect back to product list
+        } catch (error) {
+            console.error("Failed to update product:", error);
         }
     };
 
     return (
-        <div className="container mt-5">
-            <div className="row justify-content-center">
-                <div className="col-md-8">
-                    <div className="card">
-                        <div className="card-header">
-                            <h3>Edit Product</h3>
-                        </div>
-                        <div className="card-body">
-                            <form onSubmit={handleSubmit}>
-                                <div className="form-group">
-                                    <label htmlFor="Productname">ProductName</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        id="ProdutName"
-                                        placeholder="Enter Productname"
-                                        value={ProductName}
-                                        onChange={(e) => setProductName(e.target.value)}
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="Description">Description</label>
-                                    <textarea
-                                        className="form-control"
-                                        id="Description"
-                                        rows="5"
-                                        placeholder="Enter Description"
-                                        value={Description}
-                                        onChange={(e) => setDescription(e.target.value)}
-                                    />
-                                </div>
-                                 <div className="form-group">
-                                    <label htmlFor="Price">Price</label>
-                                    <textarea
-                                        className="form-control"
-                                        id="Price"
-                                        rows="5"
-                                        placeholder="Enter Price"
-                                        value={Price}
-                                        onChange={(e) => setPrice(e.target.value)}
-                                    />
-                                </div>
-                                <button type="submit" className="btn btn-primary mt-3">Update Post</button>
-                            </form>
-                        </div>
-                    </div>
+        <div className="container mt-4">
+            <h2>Edit Product</h2>
+            <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                    <label>Product Name</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        name="productname"
+                        value={formData.productname}
+                        onChange={handleChange}
+                    />
                 </div>
-            </div>
+                <div className="mb-3">
+                    <label>Description</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        name="description"
+                        value={formData.description}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="mb-3">
+                    <label>Price</label>
+                    <input
+                        type="number"
+                        className="form-control"
+                        name="price"
+                        value={formData.price}
+                        onChange={handleChange}
+                    />
+                </div>
+                <button type="submit" className="btn btn-success">Update</button>
+            </form>
         </div>
     );
 };
