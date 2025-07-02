@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Fitmart/static/css/main.89dcb919.css",
-    "main.js": "/Fitmart/static/js/main.38e77882.js",
+    "main.js": "/Fitmart/static/js/main.488f5590.js",
     "static/media/c2.jpg": "/Fitmart/static/media/c2.9f5d68cb3499808bc19f.jpg",
     "static/media/c1.jpg": "/Fitmart/static/media/c1.fda70625a2aa5363ce38.jpg",
     "static/media/c3.jpg": "/Fitmart/static/media/c3.6a82bc3034a3920867bd.jpg",
@@ -19,10 +19,10 @@
     "static/media/f3.jpg": "/Fitmart/static/media/f3.6cc3245fb830dea43520.jpg",
     "index.html": "/Fitmart/index.html",
     "main.89dcb919.css.map": "/Fitmart/static/css/main.89dcb919.css.map",
-    "main.38e77882.js.map": "/Fitmart/static/js/main.38e77882.js.map"
+    "main.488f5590.js.map": "/Fitmart/static/js/main.488f5590.js.map"
   },
   "entrypoints": [
     "static/css/main.89dcb919.css",
-    "static/js/main.38e77882.js"
+    "static/js/main.488f5590.js"
   ]
 }
